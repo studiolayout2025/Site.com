@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevBlox Studio - Projetos Roblox</title>
+  <style>
+    /* Reset básico */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a192f, #02142d);
+      color: #c0d8f8;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #011627;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #00fff7;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      user-select: none;
+      text-shadow: 0 0 8px #00fff7aa;
+    }
+
+    /* Botão do menu */
+    #menuBtn {
+      background: transparent;
+      border: 2px solid #00fff7;
+      color: #00fff7;
+      padding: 0.5rem 1.1rem;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+      user-select: none;
+    }
+
+    #menuBtn:hover {
+      background-color: #00fff7;
+      color: #011627;
+      box-shadow: 0 0 12px #00fff7;
+    }
+
+    /* Menu lateral */
+    #sideMenu {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(180deg, #011627, #022c4a);
+      box-shadow: -5px 0 25px #00fff7aa;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      transition: right 0.35s ease;
+      z-index: 1100;
+      border-left: 2px solid #00fff7;
+    }
+
+    #sideMenu.active {
+      right: 0;
+    }
+
+    #sideMenu a {
+      color: #00fff7;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      padding-left: 0.3rem;
+      border-left: 3px solid transparent;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+
+    #sideMenu a:hover {
+      border-left: 3px solid #00fff7;
+      color: #66fff7;
+      text-shadow: 0 0 10px #66fff7;
+    }
+
+    /* Overlay para fechar menu */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(1, 22, 39, 0.75);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1050;
+      user-select: none;
+    }
+
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 110px auto 40px;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: #00fff7;
+      border-bottom: 3px solid #00fff7;
+      padding-bottom: 0.35rem;
+      text-transform: uppercase;
+      text-shadow: 0 0 15px #00fff7bb;
+      user-select: none;
+    }
+
+    .project {
+      background: #011627dd;
+      border: 2px solid #00fff7;
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 0 20px #00fff7aa;
+      transition: box-shadow 0.3s ease;
+      user-select: text;
+    }
+
+    .project:hover {
+      box-shadow: 0 0 30px #00fff7ee;
+    }
+
+    .project h3 {
+      color: #00fff7;
+      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+      user-select: none;
+    }
+
+    .project p {
+      font-size: 1.1rem;
+      color: #b0d8ffcc;
+    }
+
+    footer {
+      background: #011627;
+      color: #5599bb;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      user-select: none;
+      border-top: 1px solid #00fff7;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      #menuBtn {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      main {
+        margin: 90px 1rem 40px;
+        padding: 0 1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .project h3 {
+        font-size: 1.3rem;
+      }
+
+      .project p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DevBlox Studio</h1>
+    <button id="menuBtn" aria-label="Abrir menu">☰ Menu</button>
+  </header>
+
+  <nav id="sideMenu" aria-label="Menu principal">
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <div id="overlay" tabindex="-1"></div>
+
+  <main>
+    <h2>Projetos no Roblox</h2>
+
+    <article class="project">
+      <h3>Pet Force</h3>
+      <p>Um jogo de ação e aventura onde você coleciona e treina pets poderosos para batalhas épicas.</p>
+    </article>
+
+    <article class="project">
+      <h3>CyberShot</h3>
+      <p>Projeto futurista de tiro em primeira pessoa, com mecânicas inovadoras e cenários cyberpunk.</p>
+    </article>
+
+    <article class="project">
+      <h3>Deep Sea Fisherman <small>(Em desenvolvimento)</small></h3>
+      <p>Nosso projeto principal, focado em pesca e exploração marítima, ainda está em desenvolvimento para oferecer a melhor experiência possível.</p>
+    </article>
+  </main>
+
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu() {
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+        sideMenu.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

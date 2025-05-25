@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevBlox Studio - Sobre Nós</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a192f, #02142d);
+      color: #c0d8f8;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #011627;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #00fff7;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px #00fff7aa;
+    }
+
+    #menuBtn {
+      background: transparent;
+      border: 2px solid #00fff7;
+      color: #00fff7;
+      padding: 0.5rem 1.1rem;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+    }
+
+    #menuBtn:hover {
+      background-color: #00fff7;
+      color: #011627;
+      box-shadow: 0 0 12px #00fff7;
+    }
+
+    #sideMenu {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(180deg, #011627, #022c4a);
+      box-shadow: -5px 0 25px #00fff7aa;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      transition: right 0.35s ease;
+      z-index: 1100;
+      border-left: 2px solid #00fff7;
+    }
+
+    #sideMenu.active {
+      right: 0;
+    }
+
+    #sideMenu a {
+      color: #00fff7;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+      padding-left: 0.3rem;
+      border-left: 3px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    #sideMenu a:hover {
+      border-left: 3px solid #00fff7;
+      color: #66fff7;
+      text-shadow: 0 0 10px #66fff7;
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(1, 22, 39, 0.75);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1050;
+    }
+
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 110px auto 40px;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+      color: #00fff7;
+      border-bottom: 3px solid #00fff7;
+      padding-bottom: 0.35rem;
+      text-shadow: 0 0 15px #00fff7bb;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .devs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .dev-card {
+      background: #022c4a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #00fff77a;
+      flex: 1 1 250px;
+      max-width: 280px;
+    }
+
+    .dev-avatar {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .dev-nick {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #00fff7;
+    }
+
+    .dev-name {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .right-card {
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .right-card {
+        margin-left: 0;
+      }
+    }
+
+    footer {
+      background: #011627;
+      color: #5599bb;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      border-top: 1px solid #00fff7;
+    }
+
+    .right-card {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .right-card {
+    margin-left: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DevBlox Studio</h1>
+    <button id="menuBtn">☰ Menu</button>
+  </header>
+
+  <nav id="sideMenu">
+    <a href="index.html">Início</a>
+    <a href="projetos.html">Projetos no Roblox</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <div id="overlay"></div>
+
+  <main>
+    <h2>Sobre Nós</h2>
+    <p>Somos a equipe DevBlox Studio, dedicada à criação de experiências únicas no Roblox.</p>
+
+<p>
+  A <strong>DevBlox Studio</strong> é uma equipe brasileira de desenvolvedores apaixonados por criar experiências imersivas dentro da plataforma <strong>Roblox</strong>. Nosso objetivo é transformar ideias criativas em jogos que divertem, desafiam e conectam jogadores de todas as idades. Somos movidos por inovação, dedicação e colaboração.
+</p>
+<p>
+  Nossa trajetória começou com o projeto <em>Deep Sea Fisherman</em>, que nos inspirou a expandir nossos horizontes e criar mundos ainda mais completos. Desde então, desenvolvemos títulos como <em>Pet Force</em> e <em>Cybershot</em>, sempre buscando elevar o padrão de qualidade e entretenimento.
+</p>
+<p>
+  Cada membro da DevBlox Studio contribui com habilidades únicas em programação, design, game design e storytelling. Trabalhamos como uma verdadeira equipe, respeitando ideias, aprendendo juntos e evoluindo a cada projeto.
+</p>
+<p>
+  Se você quer conhecer mais nossos jogos, sugerir ideias ou até colaborar com a gente, sinta-se à vontade para entrar em contato. A jornada está só começando!
+</p>
+
+
+<h2>Desenvolvedores</h2>
+
+<div class="devs">
+  <div class="dev-card">
+    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F9F98299AE0DBAD1057EC4A7913710AD-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Thalles" class="dev-avatar">
+    <div class="dev-nick">notcrybro</div>
+    <div class="dev-name">Thalles</div>
+    <div class="dev-desc">Iniciou a Deep Sea Fisherman. Criador da ideia original do grupo.</div>
+  </div>
+
+  <div class="dev-card">
+    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B15CAEF6650D307694884B58A3F735F9-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Gabriel" class="dev-avatar">
+    <div class="dev-nick">bobnelsongamer</div>
+    <div class="dev-name">Gabriel Nelson</div>
+    <div class="dev-desc">Criador do site e desenvolvedor da Pet Force e Cybershot. Desenvolvedor da Deep Sea Fisherman.</div>
+  </div>
+
+  <div class="dev-card right-card">
+    <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-641B59D8C9C6317E41FA65600BCBB082-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Johny" class="dev-avatar">
+    <div class="dev-nick">luffyolox</div>
+    <div class="dev-name">Johny</div>
+    <div class="dev-desc">Ajudou a programar a Pet Force. Desenvolvedor da Deep Sea Fisherman.</div>
+  </div>
+</div>
+
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        sideMenu.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

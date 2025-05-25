@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevBlox Studio - Contato</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0b1120 0%, #011627 100%);
+      color: #e0e6f1;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(1, 22, 39, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      border-bottom: 1px solid #0ff;
+      box-shadow: 0 0 20px #0ff33a55;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 0.7rem;
+    }
+
+    header h1 {
+      color: #0ff;
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .menu-button {
+      background: none;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .menu-button:hover {
+      background: #0ff;
+      color: #011627;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    /* Menu lateral */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 260px;
+      height: 100vh;
+      background: #011627;
+      box-shadow: -4px 0 15px #0ff66a44;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: right 0.3s ease;
+      z-index: 1100;
+      border-left: 2px solid #0ff;
+    }
+
+    .side-menu.active {
+      right: 0;
+    }
+
+    .side-menu a {
+      color: #0ff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #0ff3;
+      padding-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .side-menu a:hover {
+      color: #3affff;
+      text-shadow: 0 0 6px #0ff;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(1, 22, 39, 0.6);
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 120px auto 40px;
+      padding: 0 1rem;
+    }
+
+    section h2 {
+      color: #0ff;
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.12em;
+      border-bottom: 2px solid #0ff;
+      padding-bottom: 6px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    section p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b0dfff;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .contact-info {
+      background: #011627dd;
+      border: 1.5px solid #0ff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 20px #00ffff77;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #e0faff;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      background: #0ff;
+      color: #011627;
+      font-weight: bold;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .discord-btn:hover {
+      background: #00e6e6;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    footer {
+      background: #011627;
+      color: #999;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+      .menu-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+      }
+    }
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #25D366aa;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 32px;
+  height: 32px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #25D366;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo-container">
+      <img src="img/logo.png"DevBlox Studio
+
+" class="logo">
+      <h1>DevBlox Studio
+
+</h1>
+    </div>
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+  </header>
+
+  <!-- Menu lateral -->
+  <div class="side-menu" id="sideMenu">
+    <a href="/">Início</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="projetos.html">projetos no Roblox</a>
+  </div>
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section>
+      <h2>Entre em Contato</h2>
+      <p>Fale com a equipe, tire dúvidas ou participe dos nossos jogos e treinos. Estamos sempre online!</p>
+
+      <div class="contact-info">
+        <p><strong>📧 Email:</strong> lopesbiel2024@gmail.com</p>
+        <a href="https://discord.gg/kzBhvm9W" target="_blank" class="discord-btn">
+          💬 Entrar no Discord
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+  </script>
+  <!-- Botão flutuante do WhatsApp com ícone -->
+<a href="https://wa.me/5514988135145" target="_blank" class="whatsapp-float" aria-label="Conversar no WhatsApp">
+  <img src="https://img.icons8.com/m_outlined/512/whatsapp.png" alt="WhatsApp" />
+</a>
+
+</body>
+</html>
